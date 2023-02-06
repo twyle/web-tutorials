@@ -32,6 +32,10 @@ const bg3 = document.querySelector('.bg-3')
 const analytics = document.querySelector('#analytics')
 const analyticsModal = document.querySelector('.view-analytics')
 
+//MESSAGE SOMEONE
+const messageUser = document.querySelector('#message-user')
+const messageUserModal = document.querySelector('.create-message')
+
 // remove active class from all menu items
 const changeActiveItem = () => {
     menuItems.forEach(item => {
@@ -42,6 +46,17 @@ const changeActiveItem = () => {
 //EDIT PROFILE
 const editProfile = document.querySelector('#edit-user-profile')
 const editProfileModal = document.querySelector('.edit-profile')
+
+//CONTEXT MENU DROPDOWN
+const contextMenuDropdown = document.querySelector('#context-dropdown')
+const contextMenuDropdownModal = document.querySelector('.dropdownmenu')
+
+//BOOKMARK
+const bookmarkButton = document.querySelector('#bookmark-button')
+
+//COMMENT
+const commentButton = document.querySelector('#comment-button')
+const commentBox = document.querySelector('.comment-box')
 
 menuItems.forEach(item => {
     item.addEventListener('click', ()=>{
@@ -285,3 +300,53 @@ const closeEditProfileModal = (e) => {
 editProfileModal.addEventListener('click', closeEditProfileModal);
 
 editProfile.addEventListener('click', openEditProfileModal);
+
+//open modal
+const openMessageUserModal = () => {
+    messageUserModal.style.display = 'grid';
+}
+
+const closeMessageUserModal = (e) => {
+    if(e.target.classList.contains('create-message')){
+        messageUserModal.style.display = 'none'
+    }
+}
+
+//close modal
+messageUserModal.addEventListener('click', closeMessageUserModal);
+
+messageUser.addEventListener('click', openMessageUserModal);
+
+//close modal
+editProfileModal.addEventListener('click', closeEditProfileModal);
+
+editProfile.addEventListener('click', openEditProfileModal);
+
+//open modal
+const openDropDownMenuModal = () => {
+    contextMenuDropdownModal.style.display = 'block';
+    setTimeout(() => {
+        contextMenuDropdownModal.style.display = 'none';
+    }, 2000)
+}
+
+contextMenuDropdown.addEventListener('click', openDropDownMenuModal);
+
+bookmarkButton.addEventListener('click', ()=>{
+    document.querySelector('#bookmark-button').
+    style.color = 'gray';
+})
+
+commentButton.addEventListener('click', ()=>{
+    commentBox.style.display = 'inline'
+})
+
+const closeCommentBox = (e) => {
+    console.log(e)
+    if(e.target.classList.contains('comment-box')){
+        commentBox.style.display = 'none'
+    }
+}
+
+//close modal
+commentBox.addEventListener('click', closeCommentBox);

@@ -55,6 +55,7 @@ body{
     aspect-ratio: 1/1;
     border-radius: 50%;
     overflow: hidden;
+    cursor: pointer;
 }
 
 img{
@@ -458,6 +459,25 @@ main .container .left .profile{
     align-items: center;
 }
 
+.middle .feed .context-menu{
+    position: relative;
+}
+
+.middle .feed .context-menu .dropdownmenu{
+    position: absolute;
+    top: 0;
+    left: 110%;
+    width: 6rem;
+    height: 8rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    box-shadow: 0 0 2rem var(--color-primary);
+    z-index: 10;
+    display: none;
+}
+
+
 .middle .feed .photo{
     border-radius: var(--card-border-radius);
     overflow: hidden;
@@ -469,6 +489,14 @@ main .container .left .profile{
    justify-content: space-between; 
    font-size: 1.4rem;
    margin: 0.6rem;
+}
+
+.middle .feed .uis-bookmark{
+    color: lightgray;
+}
+
+.middle .comment-box{
+    display: none;
 }
 
 .middle .liked-by{
@@ -806,6 +834,30 @@ main .container .right{
 }
 
 .edit-profile .card{
+    background: var(--color-white);
+    padding: 3rem;
+    border-radius: var(--card-border-radius);
+    width: 50%;
+    box-shadow: 0 0 1rem var(--color-primary);
+}
+
+/* ============== CREATE MESSAGE ============= */
+.create-message{
+    background: rga(255,255,255,0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.create-message .card{
     background: var(--color-white);
     padding: 3rem;
     border-radius: var(--card-border-radius);
