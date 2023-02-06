@@ -49,7 +49,7 @@
                 </div>
 
                 <span>
-                    <i class="uil uil-edit"></i>
+                    <i class="uil uil-edit" id="edit-user-profile"></i>
                 </span>
 
             </div>
@@ -64,6 +64,15 @@
                     <h3>HOME</h3>
                 </a>
 
+                <a href="#" class="menu-item" id="messages-notification">
+                    <span>
+                        <i class="uil uil-envelope">
+                            <small class="notification-count">6+</small>
+                        </i>
+                    </span>
+                    <h3>MESSAGES</h3>
+                </a>
+
                 <a href="#" class="menu-item" id="notifications">
                     <span>
                         <i class="uil uil-bell">
@@ -73,7 +82,7 @@
                     <h3>NOTIFICATIONS</h3>
 
                     <!-----NOTIFICATION POPUP----------->
-                    <div class="notifications-popup">
+                    <div class="notifications-popup" id="notifications-modal">
                         <div>
                             <div class="profile-photo">
                                 <img src="./img/profile-2.jpg" alt="">
@@ -119,13 +128,57 @@
 
                 </a>
 
-                <a href="#" class="menu-item" id="messages-notification">
+                <a href="#" class="menu-item" id="bookmarks">
                     <span>
-                        <i class="uil uil-envelope">
-                            <small class="notification-count">6+</small>
-                        </i>
+                        <i class="uil uil-bookmark"></i>
                     </span>
-                    <h3>MESSAGES</h3>
+                    <h3>BOOKMARKS</h3>
+
+                    <!-----BOOKMARKS POPUP----------->
+                    <div class="bookmarks-popup" id="bookmarks-modal">
+                        <div>
+                            <div class="profile-photo">
+                                <img src="./img/profile-2.jpg" alt="">
+                            </div>
+                            <div class="notification-body">
+                                <b>Mollette Okoth</b> accepted your friend request
+                                <small class="text muted">2 DAYS AGO</small>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="profile-photo">
+                                <img src="./img/profile-3.jpg" alt="">
+                            </div>
+                            <div class="notification-body">
+                                <b>Felix Okoth</b> liked your post
+                                <small class="text muted">2 MINUTES AGO</small>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="profile-photo">
+                                <img src="./img/profile-4.jpg" alt="">
+                            </div>
+                            <div class="notification-body">
+                                <b>Lewis Yamo</b> commented on your post
+                                <small class="text muted">2 HOURS AGO</small>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="profile-photo">
+                                <img src="./img/profile-5.jpg" alt="">
+                            </div>
+                            <div class="notification-body">
+                                <b>Merry Munane</b> and <b>21 others</b> liked your post
+                                <small class="text muted">2 MINUTES AGO</small>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-----END OF BOOKMARKS POPUP----------->
+
                 </a>
 
                 <a href="#" class="menu-item" id="theme">
@@ -135,14 +188,7 @@
                     <h3>THEME</h3>
                 </a>
 
-                <a href="#" class="menu-item">
-                    <span>
-                        <i class="uil uil-bookmark"></i>
-                    </span>
-                    <h3>BOOKMARKS</h3>
-                </a>
-
-                <a href="#" class="menu-item">
+                <a href="#" class="menu-item" id="analytics">
                     <span>
                         <i class="uil uil-chart-line"></i>
                     </span>
@@ -683,6 +729,24 @@
             </div>
 
         </div>
+    </div>
+
+    <!--------- ANALYTICS ----------->    
+    <div class="view-analytics">
+
+        <div class="card">
+
+        </div>
+
+    </div>
+
+    <!--------- EDIT PROFILE ----------->    
+    <div class="edit-profile">
+
+        <div class="card">
+
+        </div>
+
     </div>
 
     <script src="./js/index.js"></script>

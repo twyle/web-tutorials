@@ -1,5 +1,13 @@
-//SIDEBAR
+//SIDEBAR 
 const menuItems = document.querySelectorAll('.menu-item');
+
+//NOTIFICATIONS
+const notifications = document.querySelector('#notifications')
+const notificationsPopup = document.querySelector('.notifications-popup')
+
+//BOOKMARKS
+const bookmarks = document.querySelector('#bookmarks')
+const bookmarksPopup = document.querySelector('.bookmarks-popup')
 
 //MESSAGES
 const messagesNotification = document.querySelector('#messages-notification')
@@ -20,6 +28,10 @@ const bg1 = document.querySelector('.bg-1')
 const bg2 = document.querySelector('.bg-2')
 const bg3 = document.querySelector('.bg-3')
 
+//ANALYTICS
+const analytics = document.querySelector('#analytics')
+const analyticsModal = document.querySelector('.view-analytics')
+
 // remove active class from all menu items
 const changeActiveItem = () => {
     menuItems.forEach(item => {
@@ -27,21 +39,41 @@ const changeActiveItem = () => {
     })
 }
 
+//EDIT PROFILE
+const editProfile = document.querySelector('#edit-user-profile')
+const editProfileModal = document.querySelector('.edit-profile')
+
 menuItems.forEach(item => {
     item.addEventListener('click', ()=>{
         changeActiveItem();
         item.classList.add('active');
-        if(item.id != 'notifications'){
-            document.querySelector('.notifications-popup').
-            style.display = 'none';
-        }
-        else{
-            document.querySelector('.notifications-popup').
-            style.display = 'block';
-            document.querySelector('#notifications .notification-count').
-            style.display = 'none';
-        }
+        // if(item.id != 'notifications'){
+        //     document.querySelector('.notifications-popup').
+        //     style.display = 'none';
+        // }
+        // else{
+        //     document.querySelector('.notifications-popup').
+        //     style.display = 'block';
+        //     document.querySelector('#notifications .notification-count').
+        //     style.display = 'none';
+        // }
     })
+})
+
+notifications.addEventListener('click', ()=>{
+    notificationsPopup.style.display = 'block';
+    document.querySelector('#notifications .notification-count').
+    style.display = 'none';
+    setTimeout(() => {
+        notificationsPopup.style.display = 'none';
+    }, 2000)
+})
+
+bookmarks.addEventListener('click', ()=>{
+    bookmarksPopup.style.display = 'block';
+    setTimeout(() => {
+        bookmarksPopup.style.display = 'none';
+    }, 2000)
 })
 
 // MESSAGES
@@ -81,8 +113,10 @@ const openThemeModal = () => {
 }
 
 const closeThemeModal = (e) => {
+    console.log(e.target.classList)
     if(e.target.classList.contains('customize-theme')){
         themeModal.style.display = 'none'
+        notificationsPopup.style.display = 'none';
     }
 }
 
@@ -218,3 +252,36 @@ bg3.addEventListener('click', () => {
     bg2.classList.remove('active')
     changeBG()
 })
+
+
+//open modal
+const openAnalyticsModal = () => {
+    analyticsModal.style.display = 'grid';
+}
+
+const closeAnalyticsModal = (e) => {
+    if(e.target.classList.contains('view-analytics')){
+        analyticsModal.style.display = 'none'
+    }
+}
+
+//close modal
+analyticsModal.addEventListener('click', closeAnalyticsModal);
+
+analytics.addEventListener('click', openAnalyticsModal);
+
+//open modal
+const openEditProfileModal = () => {
+    editProfileModal.style.display = 'grid';
+}
+
+const closeEditProfileModal = (e) => {
+    if(e.target.classList.contains('edit-profile')){
+        editProfileModal.style.display = 'none'
+    }
+}
+
+//close modal
+editProfileModal.addEventListener('click', closeEditProfileModal);
+
+editProfile.addEventListener('click', openEditProfileModal);
