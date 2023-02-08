@@ -80,6 +80,9 @@ const primaryMessages = document.querySelector('#primary')
 const friendRequests = document.querySelector('#requests')
 const requests = document.querySelectorAll('.request');
 
+//Friend Request Buttons
+const requestsButtons = document.querySelectorAll('.fr');
+
 menuItems.forEach(item => {
     item.addEventListener('click', ()=>{
         changeActiveItem();
@@ -470,3 +473,11 @@ friendRequests.addEventListener('click', () => {
     })
 })
 
+
+requestsButtons.forEach(rq => {
+    rq.addEventListener('click', e => {
+        console.log(rq.closest('#request-div'))
+        elem = rq.closest('#request-div')
+        elem.remove()
+    })
+})
