@@ -58,6 +58,17 @@ const bookmarkButton = document.querySelector('#bookmark-button')
 const commentButton = document.querySelector('#comment-button')
 const commentBox = document.querySelector('.comment-box')
 
+//DELETE
+const deleteButton = document.querySelector('#delete-button')
+const deleteBox = document.querySelector('.delete-post')
+
+//EDIT
+const editButton = document.querySelector('#edit-button')
+const editBox = document.querySelector('.edit-post')
+
+//LIKE
+const likeButton = document.querySelector('#like-button')
+
 menuItems.forEach(item => {
     item.addEventListener('click', ()=>{
         changeActiveItem();
@@ -317,11 +328,6 @@ messageUserModal.addEventListener('click', closeMessageUserModal);
 
 messageUser.addEventListener('click', openMessageUserModal);
 
-//close modal
-editProfileModal.addEventListener('click', closeEditProfileModal);
-
-editProfile.addEventListener('click', openEditProfileModal);
-
 //open modal
 const openDropDownMenuModal = () => {
     contextMenuDropdownModal.style.display = 'block';
@@ -333,8 +339,22 @@ const openDropDownMenuModal = () => {
 contextMenuDropdown.addEventListener('click', openDropDownMenuModal);
 
 bookmarkButton.addEventListener('click', ()=>{
-    document.querySelector('#bookmark-button').
-    style.color = 'gray';
+    var color = document.querySelector('#bookmark-button').style.color;
+    if (color == '')
+    {
+        document.querySelector('#bookmark-button').
+        style.color = 'darkgray';
+    }  
+    else if (color == 'lightgray')
+    {
+        document.querySelector('#bookmark-button').
+        style.color = 'darkgray';
+    }
+    else if(color == 'darkgray')
+    {
+        document.querySelector('#bookmark-button').
+        style.color = 'lightgray';
+    }
 })
 
 commentButton.addEventListener('click', ()=>{
@@ -342,11 +362,58 @@ commentButton.addEventListener('click', ()=>{
 })
 
 const closeCommentBox = (e) => {
-    console.log(e)
-    if(e.target.classList.contains('comment-box')){
+    console.log(e.target.classList)
+    if(e.target.classList.contains('comment')){
         commentBox.style.display = 'none'
     }
 }
 
+likeButton.addEventListener('click', () => {
+    console.log(likeButton.style.color)
+    if (likeButton.style.color != 'red')
+    {
+        likeButton.style.color = 'red'
+        likeButton.style.fontSize = '2rem';
+        setTimeout(() => {
+            likeButton.style.fontSize = '1.4rem';
+        }, 2000)
+    }
+    else if(likeButton.style.color == 'red')
+    {
+        likeButton.style.color = ''
+    }
+})
+
+
+//open modal
+const openDeletePostModal = () => {
+    deleteBox.style.display = 'grid';
+}
+
+const closeDeletePostModal = (e) => {
+    if(e.target.classList.contains('delete-post')){
+        deleteBox.style.display = 'none'
+    }
+}
+
 //close modal
-commentBox.addEventListener('click', closeCommentBox);
+deleteBox.addEventListener('click', closeDeletePostModal);
+
+deleteButton.addEventListener('click', openDeletePostModal);
+
+
+//open modal
+const openEditPostModal = () => {
+    editBox.style.display = 'grid';
+}
+
+const closeEditPostModal = (e) => {
+    if(e.target.classList.contains('edit-post')){
+        editBox.style.display = 'none'
+    }
+}
+
+//close modal
+editBox.addEventListener('click', closeEditPostModal);
+
+editButton.addEventListener('click', openEditPostModal);

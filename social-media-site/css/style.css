@@ -46,7 +46,7 @@ body{
 
 /* GENERAL STYLES */
 .container{
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -143,7 +143,7 @@ main{
 
 main .container{
     display: grid;
-    grid-template-columns: 18vw auto 20vw;
+    grid-template-columns: 14vw auto 22vw;
     column-gap: 2rem;
     position: relative;
 }
@@ -222,7 +222,7 @@ main .container .left .profile{
 
 .left .sidebar h3{
     margin-left: 1.5rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .left .sidebar .active{
@@ -256,7 +256,7 @@ main .container .left .profile{
     margin-top: 1rem;
     width: 100%;
     text-align: center;
-    padding: 1rem 0;
+    padding: 0.6rem 0;
 }
 
 /* -------------------NOTIFICATION POPUP ----------- */
@@ -497,6 +497,11 @@ main .container .left .profile{
 
 .middle .comment-box{
     display: none;
+}
+
+.middle .comment-box .create-post{
+    box-shadow: 0 0 1rem var(--color-primary);
+    margin-bottom: 2rem;
 }
 
 .middle .liked-by{
@@ -858,6 +863,54 @@ main .container .right{
 }
 
 .create-message .card{
+    background: var(--color-white);
+    padding: 3rem;
+    border-radius: var(--card-border-radius);
+    width: 50%;
+    box-shadow: 0 0 1rem var(--color-primary);
+}
+
+/* ============== DELETE POST ============= */
+.delete-post{
+    background: rga(255,255,255,0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.delete-post .card{
+    background: var(--color-white);
+    padding: 3rem;
+    border-radius: var(--card-border-radius);
+    width: 50%;
+    box-shadow: 0 0 1rem var(--color-primary);
+}
+
+/* ============== EDIT POST ============= */
+.edit-post{
+    background: rga(255,255,255,0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.edit-post .card{
     background: var(--color-white);
     padding: 3rem;
     border-radius: var(--card-border-radius);
