@@ -69,6 +69,17 @@ const editBox = document.querySelector('.edit-post')
 //LIKE
 const likeButton = document.querySelector('#like-button')
 
+//COMMENTS
+const commentsButton = document.querySelector('#post-comments-button')
+const postBox = document.querySelector('.post-comments')
+
+//Primary messages
+const primaryMessages = document.querySelector('#primary')
+
+//Friend requests
+const friendRequests = document.querySelector('#requests')
+const requests = document.querySelectorAll('.request');
+
 menuItems.forEach(item => {
     item.addEventListener('click', ()=>{
         changeActiveItem();
@@ -417,3 +428,45 @@ const closeEditPostModal = (e) => {
 editBox.addEventListener('click', closeEditPostModal);
 
 editButton.addEventListener('click', openEditPostModal);
+
+//open modal
+const openPostCommentsModal = () => {
+    postBox.style.display = 'grid';
+}
+
+const closePostCommentsModal = (e) => {
+    if(e.target.classList.contains('post-comments')){
+        postBox.style.display = 'none'
+    }
+}
+
+//close modal
+postBox.addEventListener('click', closePostCommentsModal);
+
+commentsButton.addEventListener('click', openPostCommentsModal);
+
+
+primaryMessages.addEventListener('click', () => {
+    primaryMessages.classList.add('active')
+    friendRequests.classList.remove('active')
+    friendRequests.style.color = 'var(--color-primary)'
+    messages.style.boxShadow = '0 0 1rem var(--color-primary)';
+    setTimeout(() => {
+        messages.style.boxShadow = 'none'
+    }, 2000)
+})
+
+friendRequests.addEventListener('click', () => {
+    primaryMessages.classList.remove('active')
+    primaryMessages.style.color = 'var(--color-primary)'
+    friendRequests.classList.add('active')
+    friendRequests.style.color = 'black'
+
+    requests.forEach(req => {
+        req.style.boxShadow = '0 0 1rem var(--color-primary)';
+        setTimeout(() => {
+            req.style.boxShadow = 'none'
+        }, 2000)
+    })
+})
+
