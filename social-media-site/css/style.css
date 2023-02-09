@@ -459,6 +459,20 @@ main .container .left .profile{
     line-height: 1.5;
 }
 
+.middle .feeds .feed .post-text{
+    /* background: var(--color-gray); */
+    border-radius: var(--card-border-radius);
+    padding: 0.7rem;
+    margin: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    /* box-shadow: 0 0 2rem var(--color-primary); */
+    /* border: 1px solid var(--color-primary); */
+    /* text-align: center; */
+    /* color: white; */
+    font-style: italic;
+}
+
 .middle .feed .head{
     display: flex;
     justify-content: space-between;
@@ -478,8 +492,8 @@ main .container .left .profile{
     position: absolute;
     top: 0;
     left: 110%;
-    width: 6rem;
-    height: 8rem;
+    width: 6.5rem;
+    height: max-content;
     background: var(--color-white);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
@@ -488,6 +502,21 @@ main .container .left .profile{
     display: none;
 }
 
+.middle .feed .context-menu .dropdownmenu .ctx-menu{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    
+}
+
+.middle .feed .context-menu .dropdownmenu .menu-item{
+    padding: 0.2rem;
+}
+
+.middle .feed .context-menu .dropdownmenu .menu-item:hover{
+    background: var(--color-primary);
+    color: var(--color-white);
+}
 
 .middle .feed .photo{
     border-radius: var(--card-border-radius);
@@ -500,9 +529,10 @@ main .container .left .profile{
    justify-content: space-between; 
    font-size: 1.4rem;
    margin: 0.6rem;
+   /* border: 1px solid var(--color-primary); */
 }
 
-.middle .feed .uis-bookmark{
+.middle .feed .bookmark .uis-bookmark{
     color: lightgray;
 }
 

@@ -61,6 +61,7 @@ const commentBox = document.querySelector('.comment-box')
 //DELETE
 const deleteButton = document.querySelector('#delete-button')
 const deleteBox = document.querySelector('.delete-post')
+const deleteButtons = document.querySelectorAll('.uil-trash')
 
 //EDIT
 const editButton = document.querySelector('#edit-button')
@@ -82,6 +83,9 @@ const requests = document.querySelectorAll('.request');
 
 //Friend Request Buttons
 const requestsButtons = document.querySelectorAll('.fr');
+
+//Create post
+const createPostButton = document.querySelector('#cr')
 
 menuItems.forEach(item => {
     item.addEventListener('click', ()=>{
@@ -357,14 +361,14 @@ bookmarkButton.addEventListener('click', ()=>{
     if (color == '')
     {
         document.querySelector('#bookmark-button').
-        style.color = 'darkgray';
+        style.color = 'black';
     }  
     else if (color == 'lightgray')
     {
         document.querySelector('#bookmark-button').
-        style.color = 'darkgray';
+        style.color = 'black';
     }
-    else if(color == 'darkgray')
+    else if(color == 'black')
     {
         document.querySelector('#bookmark-button').
         style.color = 'lightgray';
@@ -397,23 +401,6 @@ likeButton.addEventListener('click', () => {
         likeButton.style.color = ''
     }
 })
-
-
-//open modal
-const openDeletePostModal = () => {
-    deleteBox.style.display = 'grid';
-}
-
-const closeDeletePostModal = (e) => {
-    if(e.target.classList.contains('delete-post')){
-        deleteBox.style.display = 'none'
-    }
-}
-
-//close modal
-deleteBox.addEventListener('click', closeDeletePostModal);
-
-deleteButton.addEventListener('click', openDeletePostModal);
 
 
 //open modal
@@ -476,8 +463,141 @@ friendRequests.addEventListener('click', () => {
 
 requestsButtons.forEach(rq => {
     rq.addEventListener('click', e => {
-        console.log(rq.closest('#request-div'))
         elem = rq.closest('#request-div')
-        elem.remove()
+        if (rq.classList.contains('btn-primary')){
+            elem.style.boxShadow = '0 0 1rem var(--color-primary)';
+            setTimeout(() => {
+                elem.style.boxShadow = 'none'
+                elem.remove()
+            }, 1000)
+        }
+        else{
+            elem.style.boxShadow = '0 0 1rem var(--color-danger)';
+            setTimeout(() => {
+                elem.style.boxShadow = 'none'
+                elem.remove()
+            }, 1000)
+        }
+        // elem.remove()
     })
 })
+
+createPostButton.addEventListener('click', () => {
+    feedO = document.querySelector('.feed-o')
+
+    feed = document.createElement( 'div' );
+    feed.classList.add('feed')
+
+    head = document.createElement( 'div' );
+    head.classList.add('head')
+
+    user = document.createElement( 'div' );
+    user.classList.add('user')
+
+    profilePhoto = document.createElement( 'div' );
+    profilePhoto.classList.add('profile-photo')
+
+    profileImg = document.createElement('img');
+    profileImg.src = './img/profile-0.jpg'
+
+    profilePhoto.appendChild(profileImg)
+
+    ingo = document.createElement( 'div' );
+    ingo.classList.add('ingo')
+
+    h3 = document.createElement( 'h3' );
+    h3.innerHTML = 'Lyle Okoth'
+    small = document.createElement( 'small' );
+    small.innerHTML = 'Nairobi, 15 MINUTES AGO'
+
+    ingo.appendChild(h3)
+    ingo.appendChild(small)
+
+    user.appendChild(profilePhoto)
+    user.appendChild(ingo)
+
+    span = document.createElement('span')
+    span.classList.add('edit')
+    span.innerHTML = `
+        <i class="uil uil-ellipsis-h" id="context-dropdown"></i>
+                            
+        <div class="context-menu">
+            <div class="dropdownmenu">
+                <div class="card">
+
+                </div>
+            </div>
+        </div>
+    `
+    head.appendChild(user)
+    head.appendChild(span)
+
+    postText = document.createElement('div');
+    postText.classList.add('post-text')
+    postText.classList.add('text-muted')
+    post = 'A brand new post'
+    postText.innerHTML = post
+
+    postPhoto = document.createElement( 'div' );
+    postPhoto.classList.add('photo')
+
+    postImg = document.createElement('img');
+    postImg.src = './img/feed-5.jpg'
+
+    postPhoto.appendChild(postImg)
+
+    actionButtons = document.createElement('div')
+    actionButtons.classList.add('action-buttons')
+    actionButtons.innerHTML = `
+        <div class="interaction-button">
+            <span>
+                <i class="uil uil-heart like" id="like-button"></i>
+            </span>
+            <span>
+                <i class="uil uil-comment comment" id="comment-button"></i>
+            </span>
+        </div>
+
+        <div class="bookmark">
+            <span>
+                <i class="uil uil-edit" id="edit-button"></i>
+            </span>
+            <span>
+                <i class="uil uil-trash" id="delete-button"></i>
+            </span>
+            <span>
+                <i class="uis uis-bookmark" id="bookmark-button"></i>
+            </span>
+        </div>
+    `
+
+    feed.appendChild(head)
+    feed.appendChild(postText)
+    feed.appendChild(postPhoto)
+    feed.appendChild(actionButtons)
+
+    feedO.appendChild(feed)
+})
+
+
+deleteButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        currentFeed = btn.closest('.feed')
+        currentFeed.remove()
+    })
+})
+
+// const openDeletePostModal = () => {
+//     deleteBox.style.display = 'grid';
+// }
+
+// const closeDeletePostModal = (e) => {
+//     if(e.target.classList.contains('delete-post')){
+//         deleteBox.style.display = 'none'
+//     }
+// }
+
+// //close modal
+// deleteBox.addEventListener('click', closeDeletePostModal);
+
+// deleteButton.addEventListener('click', openDeletePostModal);

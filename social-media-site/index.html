@@ -257,7 +257,7 @@
             </div>
             <!----------------- END OF STORIES ----------------------->
 
-            <form action="" class="create-post">
+            <div class="create-post">
                 
                 <div class="profile-photo">
                     <img src="./img/profile-0.jpg" alt="">
@@ -270,12 +270,17 @@
                         <i class="uil uil-image-plus"></i> 
                     </label>
                 </div>
+
+                <button type="submit" class="btn btn-primary" id="cr">Post</button>
                 
-                <input type="submit" value="Post" class="btn btn-primary">
-            </form>
+            </div>
 
             <!------------------- FEEDS --------------------->
             <div class="feeds">
+
+                <div class="feed-o">
+
+                </div>
 
                 <!---------------FEED 1------------------------>
                 <div class="feed">
@@ -297,12 +302,34 @@
                             <div class="context-menu">
                                 <div class="dropdownmenu">
                                     <div class="card">
-
+                                        <div class="message ctx-menu active">
+                                            <span>
+                                                <i class="uil uil-comment-add" id="message-user"></i>
+                                            </span>
+                                            <small class="active-menu menu-item">Message</small>
+                                        </div>
+                                        <div class="befriend ctx-menu">
+                                            <span>
+                                                <i class="uil uil-user-check" id="message-user"></i>
+                                            </span>
+                                            <small class="menu-item">Befriend</small>
+                                        </div>
+                                        <div class="unfriend ctx-menu">
+                                            <span>
+                                                <i class="uil uil-user-times" id="message-user"></i>
+                                            </span>
+                                            <small class="menu-item">Unfriend</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </span>
 
+                    </div>
+
+                    <div class="post-text text-muted">
+                        Some really short, interesting post text. Some 
+                        really short, interesting post text.
                     </div>
 
                     <div class="photo">
@@ -545,9 +572,9 @@
             <div class="messages">
                 <div class="heading">
                     <h4>Messages</h4>
-                    <span>
+                    <!-- <span>
                         <i class="uil uil-comment-add" id="message-user"></i>
-                    </span>
+                    </span> -->
                 </div>
 
                 <!--------- SEARCH BAR ----------->
@@ -638,7 +665,7 @@
                     </div>
                 </div>
 
-                <div class="request">
+                <div class="request" id="request-div">
                     <div class="info">
                         <div class="profile-photo">
                             <img src="./img/profile-5.jpg" alt="">
@@ -651,16 +678,16 @@
                         </div>
                     </div>
                     <div class="action">
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary fr">
                             ACCEPT
                         </button>
-                        <button class="btn">
+                        <button class="btn fr">
                             DECLINE
                         </button>
                     </div>
                 </div>
 
-                <div class="request">
+                <div class="request" id="request-div">
                     <div class="info">
                         <div class="profile-photo">
                             <img src="./img/profile-6.jpg" alt="">
@@ -673,10 +700,32 @@
                         </div>
                     </div>
                     <div class="action">
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary fr">
                             ACCEPT
                         </button>
-                        <button class="btn">
+                        <button class="btn fr">
+                            DECLINE
+                        </button>
+                    </div>
+                </div>
+
+                <div class="request" id="request-div">
+                    <div class="info">
+                        <div class="profile-photo">
+                            <img src="./img/profile-4.jpg" alt="">
+                        </div>
+                        <div>
+                            <h5>Aisha Lik</h5>
+                            <p class="text-muted">
+                                # mutual friends
+                            </p>
+                        </div>
+                    </div>
+                    <div class="action">
+                        <button class="btn btn-primary fr">
+                            ACCEPT
+                        </button>
+                        <button class="btn fr">
                             DECLINE
                         </button>
                     </div>
