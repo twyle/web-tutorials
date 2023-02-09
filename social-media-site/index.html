@@ -804,7 +804,7 @@
     <div class="view-analytics">
 
         <div class="card">
-
+            <canvas id="myChart"></canvas>
         </div>
 
     </div>
@@ -832,6 +832,7 @@
 
         <div class="card">
 
+            
         </div>
 
     </div>
@@ -840,6 +841,46 @@
     <div class="edit-post">
 
         <div class="card">
+
+            <div class="feed">
+
+                <div class="head">
+                    
+                    <div class="user">
+                        <div class="profile-photo">
+                            <img src="./img/profile-13.jpg" alt="">
+                        </div>
+                        <div class="ingo">
+                            <h3>Lana Rose</h3>
+                            <small>Dubai, 15 MINUTES AGO</small>
+                        </div>
+                    </div>
+
+                    <span class="edit">
+                        <i class="uil uil-image-plus" id="context-dropdown"></i>
+                    </span>
+
+                </div>
+
+                <div class="photo">
+                    <img src="./img/feed-1.jpg" alt="">
+                </div>
+
+                <div class="create-post">
+                
+                    <div class="profile-photo">
+                        <img src="./img/profile-0.jpg" alt="">
+                    </div>
+    
+                    <div class="create">
+                        <input type="text" name="" id="create-post" placeholder="What's on your mind, Lyle?">
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary" id="cr">Post</button>
+                    
+                </div>
+
+            </div>
 
         </div>
 
@@ -854,7 +895,9 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/charts.js"></script>
 
 </body>
 </html>

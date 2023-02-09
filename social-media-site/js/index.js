@@ -469,14 +469,14 @@ requestsButtons.forEach(rq => {
             setTimeout(() => {
                 elem.style.boxShadow = 'none'
                 elem.remove()
-            }, 1000)
+            }, 800)
         }
         else{
             elem.style.boxShadow = '0 0 1rem var(--color-danger)';
             setTimeout(() => {
                 elem.style.boxShadow = 'none'
                 elem.remove()
-            }, 1000)
+            }, 800)
         }
         // elem.remove()
     })
