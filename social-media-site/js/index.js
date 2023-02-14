@@ -52,7 +52,7 @@ const contextMenuDropdown = document.querySelector('#context-dropdown')
 const contextMenuDropdownModal = document.querySelector('.dropdownmenu')
 
 //BOOKMARK
-const bookmarkButton = document.querySelector('#bookmark-button')
+const bookmarkButtons = document.querySelectorAll('.uis-bookmark')
 
 //COMMENT
 const commentButton = document.querySelector('#comment-button')
@@ -64,7 +64,7 @@ const deleteBox = document.querySelector('.delete-post')
 const deleteButtons = document.querySelectorAll('.uil-trash')
 
 //EDIT
-const editButton = document.querySelector('#edit-button')
+const editButtons = document.querySelectorAll('.uil-edit')
 const editBox = document.querySelector('.edit-post')
 
 //LIKE
@@ -356,23 +356,12 @@ const openDropDownMenuModal = () => {
 
 contextMenuDropdown.addEventListener('click', openDropDownMenuModal);
 
-bookmarkButton.addEventListener('click', ()=>{
-    var color = document.querySelector('#bookmark-button').style.color;
-    if (color == '')
-    {
-        document.querySelector('#bookmark-button').
-        style.color = 'black';
-    }  
-    else if (color == 'lightgray')
-    {
-        document.querySelector('#bookmark-button').
-        style.color = 'black';
-    }
-    else if(color == 'black')
-    {
-        document.querySelector('#bookmark-button').
-        style.color = 'lightgray';
-    }
+bookmarkButtons.forEach(bkbtn => {
+    bkbtn.addEventListener('click', () => {
+        var color = bkbtn.style.color;
+        alert(color)
+        bkbtn.style.color = ''
+    })
 })
 
 commentButton.addEventListener('click', ()=>{
@@ -417,7 +406,44 @@ const closeEditPostModal = (e) => {
 //close modal
 editBox.addEventListener('click', closeEditPostModal);
 
-editButton.addEventListener('click', openEditPostModal);
+editButtons.forEach(editButton => {
+    editButton.addEventListener('click', () => {
+        post = editButton.closest('.feed')
+        user = post.querySelector('.head')
+        profilePicture = user.querySelector('img')
+        ingo = user.querySelector('.ingo')
+        userName = ingo.querySelector('.user-name')
+        // location = ingo.querySelector('.location')
+        postPhoto = post.querySelector('.photo')
+        photo = postPhoto.querySelector('img')
+
+        postText = post.querySelector('.post-text')
+        console.log(postText)
+
+        editUser = editBox.querySelector('.head')
+        editProfilePicture = editUser.querySelector('img')
+        editProfilePicture.src = profilePicture.src
+
+        editIngo = editUser.querySelector('.ingo')
+        editUserName = document.querySelector('.edit-user-name')
+        editUserName.textContent = userName.textContent
+
+        editUserLocation = document.querySelector('.edit-user-location')
+
+        editPostPhoto = editBox.querySelector('.photo')
+        editPhoto = editPostPhoto.querySelector('img')
+        editPhoto.src = photo.src
+
+        editPostText = editBox.querySelector('input')
+        editPostText.value = postText.textContent
+        editPostText.focus()
+
+        addImageButton = editBox.querySelector('.uil-image-plus')
+        console.log(addImageButton)
+        editBox.style.display = 'grid';
+    })
+})
+// editButton.addEventListener('click', openEditPostModal);
 
 //open modal
 const openPostCommentsModal = () => {
@@ -483,6 +509,16 @@ requestsButtons.forEach(rq => {
 })
 
 createPostButton.addEventListener('click', () => {
+    const newFeed = document.querySelector('.very-new-post')
+    newFeedBox = newFeed.querySelector('.create-post')
+    profilePicture = newFeedBox.querySelector('img')
+    postPhoto = newFeed.querySelector('.photo')
+    newPhoto = postPhoto.querySelector('img')
+
+    newPostText = newFeed.querySelector('#create-post')
+    console.log(newPostText.value)
+    console.log(profilePicture.src)
+
     feedO = document.querySelector('.feed-o')
 
     feed = document.createElement( 'div' );
@@ -498,7 +534,7 @@ createPostButton.addEventListener('click', () => {
     profilePhoto.classList.add('profile-photo')
 
     profileImg = document.createElement('img');
-    profileImg.src = './img/profile-0.jpg'
+    profileImg.src = profilePicture.src
 
     profilePhoto.appendChild(profileImg)
 
@@ -536,13 +572,13 @@ createPostButton.addEventListener('click', () => {
     postText.classList.add('post-text')
     postText.classList.add('text-muted')
     post = 'A brand new post'
-    postText.innerHTML = post
+    postText.innerHTML = newPostText.value
 
     postPhoto = document.createElement( 'div' );
     postPhoto.classList.add('photo')
 
     postImg = document.createElement('img');
-    postImg.src = './img/feed-5.jpg'
+    postImg.src = newPhoto.src
 
     postPhoto.appendChild(postImg)
 
@@ -566,7 +602,7 @@ createPostButton.addEventListener('click', () => {
                 <i class="uil uil-trash" id="delete-button"></i>
             </span>
             <span>
-                <i class="uis uis-bookmark" id="bookmark-button"></i>
+                <i class="uis uis-bookmark"></i>
             </span>
         </div>
     `
@@ -577,6 +613,12 @@ createPostButton.addEventListener('click', () => {
     feed.appendChild(actionButtons)
 
     feedO.appendChild(feed)
+
+    newPhoto.src = ''
+    newPostText.value = ''
+    newFeedBox = newFeed.querySelector('.create-post')
+    newFeedBox.style.boxShadow = 'none'
+    newFeed.classList.remove('feed')
 })
 
 
@@ -601,3 +643,18 @@ deleteButtons.forEach(btn => {
 // deleteBox.addEventListener('click', closeDeletePostModal);
 
 // deleteButton.addEventListener('click', openDeletePostModal);
+
+const previewImage = (event) => {
+    const imageFiles = event.target.files
+    const imageFilesLength = imageFiles.length
+    const newFeed = document.querySelector('.very-new-post')
+    const postBox = document.querySelector('#new-post')
+    if (imageFilesLength > 0){
+        const imageSrc = URL.createObjectURL(imageFiles[0])
+        const imagePreviewElement = document.querySelector('#preview-selected-image')
+        imagePreviewElement.src = imageSrc
+        newFeed.classList.add('feed')
+        postBox.style.boxShadow = '0 0 1rem var(--color-primary)';
+    }
+    console.log(imageFilesLength)
+}

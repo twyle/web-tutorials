@@ -532,10 +532,6 @@ main .container .left .profile{
    /* border: 1px solid var(--color-primary); */
 }
 
-.middle .feed .bookmark .uis-bookmark{
-    color: lightgray;
-}
-
 .middle .comment-box{
     display: none;
 }
@@ -992,6 +988,10 @@ main .container .right{
     box-shadow: 0 0 0.3rem var(--color-primary);
 }
 
+.edit-post .card .create-post input{
+    text-align: start;
+}
+
 /* ============== POST COMMENTS ============= */
 .post-comments{
     background: rga(255,255,255,0.5);
@@ -1102,3 +1102,37 @@ MEDIA QUERY'S FOR SMALL TABLETS AND MOBILE PHONES
     }
 
 }
+
+.new-post{
+    background: rga(255,255,255,0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.new-post .card{
+    background: var(--color-white);
+    padding: 0.5rem;
+    border-radius: var(--card-border-radius);
+    width: 50%;
+    box-shadow: 0 0 1rem var(--color-primary);
+}
+
+.new-post .create-post{
+    box-shadow: 0 0 1rem var(--color-primary);
+}
+
+.very-new-post{
+    border-radius: var(--border-radius);
+}
+/* .very-new-post .photo{
+    display: none;
+} */

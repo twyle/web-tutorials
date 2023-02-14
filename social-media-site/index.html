@@ -257,7 +257,7 @@
             </div>
             <!----------------- END OF STORIES ----------------------->
 
-            <div class="create-post">
+            <!-- <div class="create-post">
                 
                 <div class="profile-photo">
                     <img src="./img/profile-0.jpg" alt="">
@@ -266,14 +266,40 @@
                 <div class="create">
                     <input type="text" name="" id="create-post" placeholder="What's on your mind, Lyle?">
                     <label class="custom-file-upload">
-                        <input type="file"/>
+                        <input type="file" onchange="previewImage"/>
                         <i class="uil uil-image-plus"></i> 
                     </label>
                 </div>
 
                 <button type="submit" class="btn btn-primary" id="cr">Post</button>
                 
-            </div>
+            </div> -->
+        
+                    <div class="very-new-post" id="11111">
+        
+                        <div class="photo">
+                            <img src="" alt="" id="preview-selected-image">
+                        </div>
+        
+                        <div class="create-post" id="new-post">
+                        
+                            <div class="profile-photo">
+                                <img src="./img/profile-2.jpg" alt="">
+                            </div>
+            
+                            <div class="create">
+                                <input type="text" name="" id="create-post" placeholder="What's on your mind, Lyle?">
+                                <label class="custom-file-upload">
+                                    <input type="file" onchange="previewImage(event);"/>
+                                    <i class="uil uil-image-plus"></i> 
+                                </label>
+                            </div>
+            
+                            <button type="submit" class="btn btn-primary" id="cr">Post</button>
+                            
+                        </div>
+        
+                    </div>
 
             <!------------------- FEEDS --------------------->
             <div class="feeds">
@@ -291,7 +317,7 @@
                                 <img src="./img/profile-13.jpg" alt="">
                             </div>
                             <div class="ingo">
-                                <h3>Lana Rose</h3>
+                                <h3 class="user-name">Lana Rose</h3>
                                 <small>Dubai, 15 MINUTES AGO</small>
                             </div>
                         </div>
@@ -328,8 +354,7 @@
                     </div>
 
                     <div class="post-text text-muted">
-                        Some really short, interesting post text. Some 
-                        really short, interesting post text.
+                        Some really short, interesting post text.
                     </div>
 
                     <div class="photo">
@@ -355,7 +380,8 @@
                                 <i class="uil uil-trash" id="delete-button"></i>
                             </span>
                             <span>
-                                <i class="uis uis-bookmark" id="bookmark-button"></i>
+                                <!-- <i class="uis uis-bookmark" id="bookmark-button"></i> -->
+                                <i class="uis uis-bookmark"></i>
                             </span>
                         </div>
 
@@ -412,8 +438,8 @@
                                 <img src="./img/profile-14.jpg" alt="">
                             </div>
                             <div class="ingo">
-                                <h3>Lana Rose</h3>
-                                <small>Dubai, 15 MINUTES AGO</small>
+                                <h3 class="user-name">Dave Clark</h3>
+                                <small class="post-id">Dubai, 15 MINUTES AGO</small>
                             </div>
                         </div>
 
@@ -421,6 +447,11 @@
                             <i class="uil uil-ellipsis-h"></i>
                         </span>
 
+                    </div>
+
+                    <div class="post-text text-muted">
+                        Some really short, interesting post text. Some 
+                        really short, interesting post text.
                     </div>
 
                     <div class="photo">
@@ -449,7 +480,7 @@
                                 <i class="uil uil-trash"></i>
                             </span>
                             <span>
-                                <i class="uil uil-bookmark-full"></i>
+                                <i class="uis uis-bookmark"></i>
                             </span>
                         </div>
 
@@ -491,8 +522,10 @@
                                 <img src="./img/profile-15.jpg" alt="">
                             </div>
                             <div class="ingo">
-                                <h3>Lana Rose</h3>
-                                <small>Dubai, 15 MINUTES AGO</small>
+                                <h3 class="user-name">Michael Scott</h3>
+                                <p class="location">
+                                    <small>Abidjan, 50 MINUTES AGO</small>
+                                </p>
                             </div>
                         </div>
 
@@ -500,6 +533,11 @@
                             <i class="uil uil-ellipsis-h"></i>
                         </span>
 
+                    </div>
+
+                    <div class="post-text text-muted">
+                        Some really short, interesting post text. Some 
+                        really short, interesting post text.
                     </div>
 
                     <div class="photo">
@@ -842,23 +880,32 @@
 
         <div class="card">
 
-            <div class="feed">
+            <div class="feed" id="11111">
 
                 <div class="head">
                     
                     <div class="user">
                         <div class="profile-photo">
-                            <img src="./img/profile-13.jpg" alt="">
+                            <img src="" alt="">
                         </div>
                         <div class="ingo">
-                            <h3>Lana Rose</h3>
-                            <small>Dubai, 15 MINUTES AGO</small>
+                            <h3 class="edit-user-name">Lana Rose</h3>
+                            <small class="edit-user-location">Dubai, 15 MINUTES AGO</small>
                         </div>
                     </div>
 
                     <span class="edit">
-                        <i class="uil uil-image-plus" id="context-dropdown"></i>
+                        <!-- <i class="uil uil-image-plus" id="context-dropdown"></i> -->
+                        <label class="custom-file-upload">
+                            <!-- <input type="file" value=""/> -->
+                            <i class="uil uil-image-plus" id="context-dropdown"></i> 
+                        </label>
                     </span>
+
+                    <!-- <label class="custom-file-upload">
+                        <input type="file" value=""/>
+                        <i class="uil uil-image-plus"></i> 
+                    </label> -->
 
                 </div>
 
@@ -894,6 +941,40 @@
         </div>
 
     </div>
+
+    <!-- <div class="new-post">
+
+        <div class="card">
+
+            <div class="feed" id="11111">
+
+                <div class="photo">
+                    <img src="" alt="" id="preview-selected-image">
+                </div>
+
+                <div class="create-post">
+                
+                    <div class="profile-photo">
+                        <img src="./img/profile-0.jpg" alt="">
+                    </div>
+    
+                    <div class="create">
+                        <input type="text" name="" id="create-post" placeholder="What's on your mind, Lyle?">
+                        <label class="custom-file-upload">
+                            <input type="file" onchange="previewImage(event);"/>
+                            <i class="uil uil-image-plus"></i> 
+                        </label>
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary" id="cr">Post</button>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+    </div> -->
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/index.js"></script>
