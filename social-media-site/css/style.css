@@ -532,6 +532,10 @@ main .container .left .profile{
    /* border: 1px solid var(--color-primary); */
 }
 
+.middle .feed .action-buttons .fa-heart{
+    color: red;
+}
+
 .middle .comment-box{
     display: none;
 }
@@ -622,10 +626,24 @@ main .container .right{
 
 .right .messages .message{
     display: flex;
+    justify-content: space-between;
+    align-items: start;
     gap: 1rem;
     margin-bottom: 1rem;
-    align-items: start;
 }
+
+.right .messages .message .message-content{
+    display: flex;
+    gap: 1rem;
+}
+
+.right .messages .message .message-content .message-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
 
 .right .messages .profile-photo{
     position: relative;
@@ -634,6 +652,35 @@ main .container .right{
 
 .right .messages .profile-photo img{
     border-radius: 50%;
+}
+
+.right .message-actions .context-menu{
+    position: relative;
+}
+
+.right .message-actions .context-menu .dropdownmenu{
+    position: absolute;
+    top: 0;
+    left: -200%;
+    width: max-content;
+    height: max-content;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    box-shadow: 0 0 2rem var(--color-primary);
+    z-index: 10;
+    display: none;
+}
+
+.right .message-actions .context-menu .dropdownmenu .ctx-menu{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;  
+}
+
+.right .message-actions .context-menu .dropdownmenu .menu-item:hover{
+    background: var(--color-primary);
+    color: var(--color-white);
 }
 
 .right .messages .message:last-child{
@@ -850,19 +897,19 @@ main .container .right{
     left: 0;
     z-index: 100;
     text-align: center;
-    display: grid;
+    display: none;
     place-items: center;
     font-size: 0.9rem;
-    display: none;
 }
 
 .view-analytics .card{
     background: var(--color-white);
-    padding: 1rem 1rem;
+    padding: 10px 10px;
     border-radius: var(--card-border-radius);
     width: 50%;
     box-shadow: 0 0 1rem var(--color-primary);
-}
+} 
+
 
 /* .view-analytics .card .charts{
     margin: 1rem auto;
@@ -891,14 +938,13 @@ main .container .right{
 /* ============== EDIT PROFILE ============= */
 .edit-profile{
     background: rga(255,255,255,0.5);
-    width: 100vw;
+    width: 70vw;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
     text-align: center;
-    display: grid;
     place-items: center;
     font-size: 0.9rem;
     display: none;
@@ -910,6 +956,97 @@ main .container .right{
     border-radius: var(--card-border-radius);
     width: 50%;
     box-shadow: 0 0 1rem var(--color-primary);
+}
+
+.edit-profile-form-box{
+    text-align: center;
+}
+
+.edit-profile-form-box h1{
+    font-size: 30px;
+    margin-bottom: 60px;
+    color: #3c00a0;
+    position: relative;
+}
+
+.edit-profile-form-box h1::after{
+    content: '';
+    width: 30px;
+    height: 4px;
+    border-radius: 3px;
+    background: #3c00a0;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.edit-profile-form-box .user-profile-image{
+    display: flex;
+    padding-left: 7rem;
+}
+
+.edit-profile-form-box img{
+    display: block;
+    width: 100%;
+} 
+
+.edit-profile-form-box .profile-photo{
+    position: relative;
+    border-radius: 50%;
+    /* overflow: hidden; */
+    width: 120px;
+    height: 120px;
+}
+
+.edit-profile-form-box .input-field{
+    background: #eaeaea;
+    margin: 15px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.edit-profile-form-box input{
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 15px 15px;
+}
+
+.edit-profile-form-box .input-field i{
+    margin-left: 15px;
+    color: #999;
+}
+
+.edit-profile-form-box form p{
+    text-align: center;
+    font-size: 13px;
+}
+
+form p a{
+    text-decoration: none;
+    color: #3c00a0;
+}
+
+.edit-profile-form-box .btn-field{
+    width: 100%;
+    /* display: flex;
+    justify-content: space-between; */
+    margin-top: 30px;
+}
+
+.edit-profile-form-box .btn-field button{
+    width: 60%;
+    background: #3c00a0;
+    color: #fff;
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
 }
 
 /* ============== CREATE MESSAGE ============= */
@@ -1002,7 +1139,6 @@ main .container .right{
     left: 0;
     z-index: 100;
     text-align: center;
-    display: grid;
     place-items: center;
     font-size: 0.9rem;
     display: none;
@@ -1014,6 +1150,29 @@ main .container .right{
     border-radius: var(--card-border-radius);
     width: 50%;
     box-shadow: 0 0 1rem var(--color-primary);
+}
+
+/* -------------------BOOKMARKS POPUP ----------- */
+
+.post-comments .post-comments-popup{
+    width: 30rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    /* box-shadow: 0 0 2rem var(--color-primary); */
+    z-index: 0;
+    display: grid;
+}
+
+.post-comments .post-comments-popup > div{
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post-comments .post-comments-popup small{
+    display: block;
 }
 
 /* =========================

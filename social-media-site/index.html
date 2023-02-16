@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/solid.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"  />
     <title>social-lyle</title>
 </head>
 <body>
@@ -329,20 +330,27 @@
                                 <div class="dropdownmenu">
                                     <div class="card">
                                         <div class="message ctx-menu active">
-                                            <span>
+                                            <!-- <span>
                                                 <i class="uil uil-comment-add" id="message-user"></i>
+                                            </span> -->
+                                            <span>
+                                                <i class="fa-regular fa-message"></i>
                                             </span>
                                             <small class="active-menu menu-item">Message</small>
                                         </div>
                                         <div class="befriend ctx-menu">
                                             <span>
-                                                <i class="uil uil-user-check" id="message-user"></i>
+                                                <!-- <i class="uil uil-user-check" id="message-user"></i> -->
+                                                <i class="fa-solid fa-user-plus" id="message-user"></i>
+                                                <!-- <i class="fa-regular fa-user-plus" id="message-user"></i> -->
                                             </span>
                                             <small class="menu-item">Befriend</small>
                                         </div>
                                         <div class="unfriend ctx-menu">
                                             <span>
-                                                <i class="uil uil-user-times" id="message-user"></i>
+                                                <!-- <i class="uil uil-user-times" id="message-user"></i> -->
+                                                <i class="fa-solid fa-user-minus" ></i>
+                                                <!-- <i class="fa-regular fa-user-minus"></i> -->
                                             </span>
                                             <small class="menu-item">Unfriend</small>
                                         </div>
@@ -367,28 +375,58 @@
                             <span>
                                 <i class="uil uil-heart like" id="like-button"></i>
                             </span>
-                            <span>
-                                <i class="uil uil-comment comment" id="comment-button"></i>
+                            <!-- <span>
+                                <i class="fa-solid fa-heart"></i>
                             </span>
+                            <span>
+                                <i class="fa-regular fa-heart"></i>
+                            </span> -->
+                            <span>
+                                <i class="uil uil-comment" id="comment-button"></i>
+                            </span>
+                            <!-- <span>
+                                <i class="fa-solid fa-comment"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-comment"></i>
+                            </span> -->
                         </div>
 
                         <div class="bookmark">
                             <span>
                                 <i class="uil uil-edit" id="edit-button"></i>
                             </span>
+                            <!-- <span>
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-pen-to-square"></i>
+                            </span> -->
                             <span>
                                 <i class="uil uil-trash" id="delete-button"></i>
                             </span>
+                            <!-- <span>
+                                <i class="fa-solid fa-trash-can"></i>
+                            </span>
+                            <span>
+                                <i class="fa-regular fa-trash-can"></i>
+                            </span> -->
                             <span>
                                 <!-- <i class="uis uis-bookmark" id="bookmark-button"></i> -->
                                 <i class="uis uis-bookmark"></i>
                             </span>
+                            <!-- <span>
+                                <i class="fa-regular fa-bookmark"></i>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-bookmark"></i>
+                            </span> -->
                         </div>
 
                     </div>
 
                     <div class="comment-box" id="cmt">
-                        <form action="" class="create-post">
+                        <div class="create-post">
                 
                             <div class="profile-photo">
                                 <img src="./img/profile-0.jpg" alt="">
@@ -398,8 +436,8 @@
                                 <input type="text" name="" id="create-post" placeholder="Comment on Lyle's post.">
                             </div>
                             
-                            <input type="submit" value="Comment" class="btn btn-primary">
-                        </form>
+                            <input type="submit" value="Comment" class="btn btn-primary" id="submit-comment">
+                        </div>
                     </div>
 
                     <div class="liked-by">
@@ -422,7 +460,7 @@
                         </p>
                     </div>
 
-                    <div class="comments text-muted" id="post-comments-button">
+                    <div class="comments text-muted" id="pcb">
                         View all 25 comments
                     </div>
 
@@ -633,44 +671,182 @@
 
                 <!--------- MESSAGE ----------->
                 <div class="message">
-                    <div class="profile-photo">
-                        <img src="./img/profile-16.jpg" alt="">
-                        <div class="active"></div>
+                    <div class="message-content">
+                        <div class="profile-photo">
+                            <img src="./img/profile-16.jpg" alt="">
+                            <div class="active"></div>
+                        </div>
+                        <div class="message-body">
+                            <h5>Eden Quist</h5>
+                            <p class="text-muted">Just woke up bruh</p>
+                        </div>
                     </div>
-                    <div class="message-body">
-                        <h5>Eden Quist</h5>
-                        <p class="text-muted">Just woke up bruh</p>
+                    
+                    <div class="message-actions">
+                        <span>
+                            <i class="uil uil-ellipsis-h message-actions-buttons"></i>
+
+                            <div class="context-menu">
+                                <div class="dropdownmenu">
+                                    <div class="card">
+                                        <div class="message ctx-menu active">
+                                            <!-- <span>
+                                                <i class="uil uil-comment-add" id="message-user"></i>
+                                            </span> -->
+                                            <span>
+                                                <i class="fa-regular fa-message"></i>
+                                            </span>
+                                            <small class="active-menu menu-item">Reply</small>
+                                        </div>
+                                        <div class="befriend ctx-menu">
+                                            <span>
+                                                <!-- <i class="uil uil-user-check" id="message-user"></i> -->
+                                                <i class="fa-solid fa-rectangle-xmark"></i>
+                                                <!-- <i class="fa-regular fa-user-plus" id="message-user"></i> -->
+                                            </span>
+                                            <small class="menu-item">Close</small>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </span>
                     </div>
                 </div>
 
                 <div class="message">
-                    <div class="profile-photo">
-                        <img src="./img/profile-17.jpg" alt="">
+                    <div class="message-content">
+                        <div class="profile-photo">
+                            <img src="./img/profile-17.jpg" alt="">
+                            <div class="active"></div>
+                        </div>
+                        <div class="message-body">
+                            <h5>Elon Dark</h5>
+                            <p class="text-muted">What a fantastic game!</p>
+                        </div>
                     </div>
-                    <div class="message-body">
-                        <h5>Elon Dark</h5>
-                        <p class="text-muted">What a fantastic game!</p>
+                    
+                    <div class="message-actions">
+                        <span>
+                            <i class="uil uil-ellipsis-h message-actions-buttons"></i>
+
+                            <div class="context-menu">
+                                <div class="dropdownmenu">
+                                    <div class="card">
+                                        <div class="message ctx-menu active">
+                                            <!-- <span>
+                                                <i class="uil uil-comment-add" id="message-user"></i>
+                                            </span> -->
+                                            <span>
+                                                <i class="fa-regular fa-message"></i>
+                                            </span>
+                                            <small class="active-menu menu-item">Reply</small>
+                                        </div>
+                                        <div class="befriend ctx-menu">
+                                            <span>
+                                                <!-- <i class="uil uil-user-check" id="message-user"></i> -->
+                                                <i class="fa-solid fa-rectangle-xmark"></i>
+                                                <!-- <i class="fa-regular fa-user-plus" id="message-user"></i> -->
+                                            </span>
+                                            <small class="menu-item">Close</small>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </span>
                     </div>
                 </div>
 
                 <div class="message">
-                    <div class="profile-photo">
-                        <img src="./img/profile-19.jpg" alt="">
+                    <div class="message-content">
+                        <div class="profile-photo">
+                            <img src="./img/profile-18.jpg" alt="">
+                            <div class="active"></div>
+                        </div>
+                        <div class="message-body">
+                            <h5>Ludviv Krap</h5>
+                            <p class="text-muted">No way!</p>
+                        </div>
                     </div>
-                    <div class="message-body">
-                        <h5>Ludviv Krap</h5>
-                        <p class="text-muted">No way!</p>
+                    
+                    <div class="message-actions">
+                        <span>
+                            <i class="uil uil-ellipsis-h message-actions-buttons"></i>
+
+                            <div class="context-menu">
+                                <div class="dropdownmenu">
+                                    <div class="card">
+                                        <div class="message ctx-menu active">
+                                            <!-- <span>
+                                                <i class="uil uil-comment-add" id="message-user"></i>
+                                            </span> -->
+                                            <span>
+                                                <i class="fa-regular fa-message"></i>
+                                            </span>
+                                            <small class="active-menu menu-item">Reply</small>
+                                        </div>
+                                        <div class="befriend ctx-menu">
+                                            <span>
+                                                <!-- <i class="uil uil-user-check" id="message-user"></i> -->
+                                                <i class="fa-solid fa-rectangle-xmark"></i>
+                                                <!-- <i class="fa-regular fa-user-plus" id="message-user"></i> -->
+                                            </span>
+                                            <small class="menu-item">Close</small>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </span>
                     </div>
                 </div>
 
                 <div class="message">
-                    <div class="profile-photo">
-                        <img src="./img/profile-18.jpg" alt="">
-                        <div class="active"></div>
+                    <div class="message-content">
+                        <div class="profile-photo">
+                            <img src="./img/profile-18.jpg" alt="">
+                            <div class="active"></div>
+                        </div>
+                        <div class="message-body">
+                            <h5>Mike Ken</h5>
+                            <p class="text-muted">Man U sucks!</p>
+                        </div>
                     </div>
-                    <div class="message-body">
-                        <h5>Mike Ken</h5>
-                        <p class="text-muted">Man U sucks!</p>
+                    
+                    <div class="message-actions">
+                        <span>
+                            <i class="uil uil-ellipsis-h message-actions-buttons"></i>
+
+                            <div class="context-menu">
+                                <div class="dropdownmenu">
+                                    <div class="card">
+                                        <div class="message ctx-menu active">
+                                            <!-- <span>
+                                                <i class="uil uil-comment-add" id="message-user"></i>
+                                            </span> -->
+                                            <span>
+                                                <i class="fa-regular fa-message"></i>
+                                            </span>
+                                            <small class="active-menu menu-item">Reply</small>
+                                        </div>
+                                        <div class="befriend ctx-menu">
+                                            <span>
+                                                <!-- <i class="uil uil-user-check" id="message-user"></i> -->
+                                                <i class="fa-solid fa-rectangle-xmark"></i>
+                                                <!-- <i class="fa-regular fa-user-plus" id="message-user"></i> -->
+                                            </span>
+                                            <small class="menu-item">Close</small>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </span>
                     </div>
                 </div>
 
@@ -842,7 +1018,22 @@
     <div class="view-analytics">
 
         <div class="card">
-            <canvas id="myChart"></canvas>
+            <div class='top-charts'>
+                <!-- <div class="chart-div" >
+                    <canvas id="myChart"></canvas>
+                </div> -->
+                <div class="chart-div">
+                    <canvas id="myChart2"></canvas>
+                </div>
+            </div>    
+            <div class='bottom-charts'>
+                <div class="chart-div" >
+                    <canvas id="myChart3"></canvas>
+                </div>
+                <!-- <div class="chart-div">
+                    <canvas id="myChart4"></canvas>
+                </div> -->
+            </div>        
         </div>
 
     </div>
@@ -851,7 +1042,47 @@
     <div class="edit-profile">
 
         <div class="card">
+            <div class="edit-profile-form-box">
 
+                <h1>Update Profile</h1>
+
+                <form action="">
+                    <div class="input-group">
+
+                        <div class="user-profile-image">
+                            <div class="profile-photo update">
+                                <img src="./img/profile-13.jpg" alt="">
+                            </div>
+    
+                            <label class="custom-file-upload">
+                                <i class="uil uil-image-plus" id="post-image-upload"></i> 
+                            </label>
+                        </div>
+
+                        <div class="input-field">
+                            <i class="uil uil-user-circle"></i>
+                            <input type="text" name="" placeholder="Name" id="">
+                        </div>
+
+                        <div class="input-field">
+                            <i class="uil uil-envelope-alt"></i>
+                            <input type="email" name="" placeholder="Email" id="">
+                        </div>
+
+                        <div class="input-field">
+                            <i class="uil uil-padlock"></i>
+                            <input type="password" name="" placeholder="Handle" id="">
+                        </div>
+
+                    </div>
+
+                    <div class="btn-field">
+                        <button type="button">Update Profile</button>
+                    </div>
+
+                </form>
+
+            </div>
         </div>
 
     </div>
@@ -895,17 +1126,10 @@
                     </div>
 
                     <span class="edit">
-                        <!-- <i class="uil uil-image-plus" id="context-dropdown"></i> -->
                         <label class="custom-file-upload">
-                            <!-- <input type="file" value=""/> -->
-                            <i class="uil uil-image-plus" id="context-dropdown"></i> 
+                            <i class="uil uil-image-plus" id="post-image-upload"></i> 
                         </label>
                     </span>
-
-                    <!-- <label class="custom-file-upload">
-                        <input type="file" value=""/>
-                        <i class="uil uil-image-plus"></i> 
-                    </label> -->
 
                 </div>
 
@@ -922,8 +1146,8 @@
                     <div class="create">
                         <input type="text" name="" id="create-post" placeholder="What's on your mind, Lyle?">
                     </div>
-    
-                    <button type="submit" class="btn btn-primary" id="cr">Post</button>
+
+                    <button type="submit" class="btn btn-primary submit-edited-post">Post</button>
                     
                 </div>
 
@@ -937,6 +1161,51 @@
     <div class="post-comments">
 
         <div class="card">
+
+            <!-----POST COMMENTS POPUP----------->
+            <div class="post-comments-popup">
+                <div>
+                    <div class="profile-photo">
+                        <img src="./img/profile-2.jpg" alt="">
+                    </div>
+                    <div class="notification-body">
+                        <b>Mollette Okoth</b> accepted your friend request
+                        <small class="text muted">2 DAYS AGO</small>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="profile-photo">
+                        <img src="./img/profile-3.jpg" alt="">
+                    </div>
+                    <div class="notification-body">
+                        <b>Felix Okoth</b> liked your post
+                        <small class="text muted">2 MINUTES AGO</small>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="profile-photo">
+                        <img src="./img/profile-4.jpg" alt="">
+                    </div>
+                    <div class="notification-body">
+                        <b>Lewis Yamo</b> commented on your post
+                        <small class="text muted">2 HOURS AGO</small>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="profile-photo">
+                        <img src="./img/profile-5.jpg" alt="">
+                    </div>
+                    <div class="notification-body">
+                        <b>Merry Munane</b> and <b>21 others</b> liked your post
+                        <small class="text muted">2 MINUTES AGO</small>
+                    </div>
+                </div>
+
+            </div>
+            <!-----END OF POST COMMENTS POPUP----------->
 
         </div>
 

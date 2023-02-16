@@ -57,6 +57,8 @@ const bookmarkButtons = document.querySelectorAll('.uis-bookmark')
 //COMMENT
 const commentButton = document.querySelector('#comment-button')
 const commentBox = document.querySelector('.comment-box')
+//Close comment box
+const submitCommentButton = document.querySelector('#submit-comment')
 
 //DELETE
 const deleteButton = document.querySelector('#delete-button')
@@ -70,10 +72,6 @@ const editBox = document.querySelector('.edit-post')
 //LIKE
 const likeButton = document.querySelector('#like-button')
 
-//COMMENTS
-const commentsButton = document.querySelector('#post-comments-button')
-const postBox = document.querySelector('.post-comments')
-
 //Primary messages
 const primaryMessages = document.querySelector('#primary')
 
@@ -86,6 +84,23 @@ const requestsButtons = document.querySelectorAll('.fr');
 
 //Create post
 const createPostButton = document.querySelector('#cr')
+
+
+//COMMENTS
+const commentsButton = document.querySelector('#pcb')
+const postCommentsBox = document.querySelector('.post-comments')
+
+//Message actions
+const messageActionButtons = document.querySelectorAll('.message-actions-buttons')
+
+//Submite edited post
+const submitEdittedPostButtons = document.querySelectorAll('.submit-edited-post')
+
+//old post
+let oldPost;
+
+//Post Image update
+const uploadPostImageButton = document.querySelector('#post-image-upload')
 
 menuItems.forEach(item => {
     item.addEventListener('click', ()=>{
@@ -364,16 +379,17 @@ bookmarkButtons.forEach(bkbtn => {
     })
 })
 
+//comment
+
 commentButton.addEventListener('click', ()=>{
     commentBox.style.display = 'inline'
 })
 
 const closeCommentBox = (e) => {
-    console.log(e.target.classList)
-    if(e.target.classList.contains('comment')){
-        commentBox.style.display = 'none'
-    }
+    commentBox.style.display = 'none'
 }
+
+submitCommentButton.addEventListener('click', closeCommentBox)
 
 likeButton.addEventListener('click', () => {
     console.log(likeButton.style.color)
@@ -409,6 +425,7 @@ editBox.addEventListener('click', closeEditPostModal);
 editButtons.forEach(editButton => {
     editButton.addEventListener('click', () => {
         post = editButton.closest('.feed')
+        oldPost = post
         user = post.querySelector('.head')
         profilePicture = user.querySelector('img')
         ingo = user.querySelector('.ingo')
@@ -441,28 +458,51 @@ editButtons.forEach(editButton => {
         addImageButton = editBox.querySelector('.uil-image-plus')
         console.log(addImageButton)
         editBox.style.display = 'grid';
+
     })
 })
-// editButton.addEventListener('click', openEditPostModal);
 
-//open modal
-const openPostCommentsModal = () => {
-    postBox.style.display = 'grid';
+uploadPostImageButton.addEventListener('click', () => {
+    var input = document.createElement('input');
+    input.type = 'file';
+
+    input.onchange = event => { 
+        const imageFiles = event.target.files
+        const imageFilesLength = imageFiles.length
+        if (imageFilesLength > 0){
+            const imageSrc = URL.createObjectURL(imageFiles[0])
+            editPostPhoto = editBox.querySelector('.photo')
+            editPhoto = editPostPhoto.querySelector('img')
+            editPhoto.src = imageSrc
+        }
+     }
+
+    input.click();
+})
+
+submitEdittedPostButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        editPostPhoto = editBox.querySelector('.photo')
+        editPhoto = editPostPhoto.querySelector('img')
+        editPostText = editBox.querySelector('input')
+
+        oldPhoto = oldPost.querySelector('.photo')
+        oldPhoto = oldPhoto.querySelector('img')
+        oldPhoto.src = editPhoto.src
+        oldText = oldPost.querySelector('.post-text')
+        oldText.textContent = editPostText.value
+        editBox.style.display = 'none';
+    })
+})
+
+const editPost = (newImage, newText, oldPost) => {
+    alert('hey')
+    console.log(newImage)
 }
-
-const closePostCommentsModal = (e) => {
-    if(e.target.classList.contains('post-comments')){
-        postBox.style.display = 'none'
-    }
-}
-
-//close modal
-postBox.addEventListener('click', closePostCommentsModal);
-
-commentsButton.addEventListener('click', openPostCommentsModal);
 
 
 primaryMessages.addEventListener('click', () => {
+    primaryMessages.style.color = 'black'
     primaryMessages.classList.add('active')
     friendRequests.classList.remove('active')
     friendRequests.style.color = 'var(--color-primary)'
@@ -658,3 +698,30 @@ const previewImage = (event) => {
     }
     console.log(imageFilesLength)
 }
+
+commentsButton.addEventListener('click', () => {
+    postCommentsBox.style.display = 'grid'
+})
+
+const closePostCommentsModal = (e) => {
+    if(e.target.classList.contains('post-comments')){
+        postCommentsBox.style.display = 'none'
+    }
+}
+
+//close modal
+postCommentsBox.addEventListener('click', closePostCommentsModal);
+
+
+//Message actions
+messageActionButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        nextSibling = btn.nextElementSibling
+        dropDownMenu = nextSibling.querySelector('.dropdownmenu')
+        dropDownMenu.style.display = 'block'
+
+        setTimeout(() => {
+            dropDownMenu.style.display = 'none'
+        }, 3000)
+    })
+})
