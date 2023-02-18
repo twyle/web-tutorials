@@ -532,8 +532,30 @@ main .container .left .profile{
    /* border: 1px solid var(--color-primary); */
 }
 
-.middle .feed .action-buttons .fa-heart{
-    color: red;
+.middle .feed .action-buttons .interaction-button{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.middle .feed .action-buttons .interaction-button i{
+    display: none;
+}
+
+.middle .feed .action-buttons .interaction-button i.active{
+    display: block;
+}
+
+.middle .feed .action-buttons .bookmark{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.middle .feed .action-buttons .bookmark i{
+    display: none;
+}
+
+.middle .feed .action-buttons .bookmark i.active{
+    display: inline;
 }
 
 .middle .comment-box{
@@ -1295,3 +1317,26 @@ MEDIA QUERY'S FOR SMALL TABLETS AND MOBILE PHONES
 /* .very-new-post .photo{
     display: none;
 } */
+
+
+.reply-message{
+    background: rga(255,255,255,0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    place-items: center;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.reply-message .card{
+    background: var(--color-white);
+    padding: 0 0.5rem;
+    border-radius: var(--border-radius);
+    width: 50%;
+    box-shadow: 0 0 1rem var(--color-primary);
+}

@@ -52,25 +52,58 @@ const contextMenuDropdown = document.querySelector('#context-dropdown')
 const contextMenuDropdownModal = document.querySelector('.dropdownmenu')
 
 //BOOKMARK
-const bookmarkButtons = document.querySelectorAll('.uis-bookmark')
+const bookmarkButtons = document.querySelectorAll('.bookmark-button')
+bookmarkButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const bookmarkButtonSolid = btn.querySelector('.fa-solid')
+        const bookmarkButtonRegular = btn.querySelector('.fa-regular')
+        bookmarkButtonSolid.classList.toggle('active')
+        bookmarkButtonRegular.classList.toggle('active')
+    })
+})
 
 //COMMENT
-const commentButton = document.querySelector('#comment-button')
-const commentBox = document.querySelector('.comment-box')
+const commentButtons = document.querySelectorAll('.fa-comment')
+commentButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const feed = btn.closest('.feed')
+        const comment = feed.querySelector('.comment-box')
+        comment.style.display = 'block'
+    })
+})
 //Close comment box
-const submitCommentButton = document.querySelector('#submit-comment')
+const submitCommentButtons = document.querySelectorAll('.submit-comment')
+submitCommentButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        comment = btn.closest('.comment-box')
+        comment.style.display = 'none'
+    })
+})
 
 //DELETE
-const deleteButton = document.querySelector('#delete-button')
 const deleteBox = document.querySelector('.delete-post')
-const deleteButtons = document.querySelectorAll('.uil-trash')
+const deleteButtons = document.querySelectorAll('.fa-trash-can')
 
 //EDIT
-const editButtons = document.querySelectorAll('.uil-edit')
+const editButtons = document.querySelectorAll('.fa-pen-to-square')
 const editBox = document.querySelector('.edit-post')
 
+
 //LIKE
-const likeButton = document.querySelector('#like-button')
+const likeButtons = document.querySelectorAll('.like-button')
+likeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const likeButtonSolid = btn.querySelector('.fa-solid')
+        const likeButtonRegular = btn.querySelector('.fa-regular')
+        likeButtonSolid.classList.toggle('active')
+        likeButtonRegular.classList.toggle('active')
+        likeButtonSolid.style.color = 'red'
+        likeButtonSolid.style.fontSize = '2rem'
+        setTimeout(() => {
+            likeButtonSolid.style.fontSize = '1.4rem'
+        }, 1000)
+    })
+})
 
 //Primary messages
 const primaryMessages = document.querySelector('#primary')
@@ -100,7 +133,32 @@ const submitEdittedPostButtons = document.querySelectorAll('.submit-edited-post'
 let oldPost;
 
 //Post Image update
-const uploadPostImageButton = document.querySelector('#post-image-upload')
+const uploadPostImageButtons = document.querySelectorAll('.post-image-upload')
+
+//REPLY TO MESSAGE
+const replyButtons = document.querySelectorAll('.fa-message')
+const messageBox = document.querySelector('.reply-message')
+
+replyButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        messageBox.style.display = 'grid'
+    })
+})
+
+messageBox.addEventListener('click', e => {
+    if(e.target.classList.contains('reply-message')){
+        messageBox.style.display = 'none'
+    }
+})
+
+//CLOSE MESSAGE
+const closeMessageButtons = document.querySelectorAll('.fa-rectangle-xmark')
+closeMessageButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const message = btn.closest('.message')
+        message.remove()
+    })
+})
 
 menuItems.forEach(item => {
     item.addEventListener('click', ()=>{
@@ -172,7 +230,6 @@ const openThemeModal = () => {
 }
 
 const closeThemeModal = (e) => {
-    console.log(e.target.classList)
     if(e.target.classList.contains('customize-theme')){
         themeModal.style.display = 'none'
         notificationsPopup.style.display = 'none';
@@ -371,42 +428,6 @@ const openDropDownMenuModal = () => {
 
 contextMenuDropdown.addEventListener('click', openDropDownMenuModal);
 
-bookmarkButtons.forEach(bkbtn => {
-    bkbtn.addEventListener('click', () => {
-        var color = bkbtn.style.color;
-        alert(color)
-        bkbtn.style.color = ''
-    })
-})
-
-//comment
-
-commentButton.addEventListener('click', ()=>{
-    commentBox.style.display = 'inline'
-})
-
-const closeCommentBox = (e) => {
-    commentBox.style.display = 'none'
-}
-
-submitCommentButton.addEventListener('click', closeCommentBox)
-
-likeButton.addEventListener('click', () => {
-    console.log(likeButton.style.color)
-    if (likeButton.style.color != 'red')
-    {
-        likeButton.style.color = 'red'
-        likeButton.style.fontSize = '2rem';
-        setTimeout(() => {
-            likeButton.style.fontSize = '1.4rem';
-        }, 2000)
-    }
-    else if(likeButton.style.color == 'red')
-    {
-        likeButton.style.color = ''
-    }
-})
-
 
 //open modal
 const openEditPostModal = () => {
@@ -462,8 +483,9 @@ editButtons.forEach(editButton => {
     })
 })
 
-uploadPostImageButton.addEventListener('click', () => {
-    var input = document.createElement('input');
+uploadPostImageButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        var input = document.createElement('input');
     input.type = 'file';
 
     input.onchange = event => { 
@@ -478,6 +500,7 @@ uploadPostImageButton.addEventListener('click', () => {
      }
 
     input.click();
+    })
 })
 
 submitEdittedPostButtons.forEach(btn => {
@@ -485,6 +508,7 @@ submitEdittedPostButtons.forEach(btn => {
         editPostPhoto = editBox.querySelector('.photo')
         editPhoto = editPostPhoto.querySelector('img')
         editPostText = editBox.querySelector('input')
+        console.log(editPhoto)
 
         oldPhoto = oldPost.querySelector('.photo')
         oldPhoto = oldPhoto.querySelector('img')
@@ -494,11 +518,6 @@ submitEdittedPostButtons.forEach(btn => {
         editBox.style.display = 'none';
     })
 })
-
-const editPost = (newImage, newText, oldPost) => {
-    alert('hey')
-    console.log(newImage)
-}
 
 
 primaryMessages.addEventListener('click', () => {
@@ -624,28 +643,45 @@ createPostButton.addEventListener('click', () => {
 
     actionButtons = document.createElement('div')
     actionButtons.classList.add('action-buttons')
-    actionButtons.innerHTML = `
-        <div class="interaction-button">
-            <span>
-                <i class="uil uil-heart like" id="like-button"></i>
-            </span>
-            <span>
-                <i class="uil uil-comment comment" id="comment-button"></i>
-            </span>
-        </div>
 
-        <div class="bookmark">
+    
+    actionButtons.innerHTML = `
+    <div class="interaction-button">
+        <div class="like-button">
             <span>
-                <i class="uil uil-edit" id="edit-button"></i>
+                <i class="fa-solid fa-heart"></i>
             </span>
             <span>
-                <i class="uil uil-trash" id="delete-button"></i>
-            </span>
-            <span>
-                <i class="uis uis-bookmark"></i>
+                <i class="fa-regular fa-heart active"></i>
             </span>
         </div>
+        <span>
+            <i class="fa-regular fa-comment active"></i>
+        </span>
+    </div>
+
+    <div class="bookmark">
+        <span>
+            <i class="fa-regular fa-pen-to-square active"></i>
+        </span>
+        <span>
+            <i class="fa-regular fa-trash-can active"></i>
+        </span>
+        <div class="bookmark-button">
+            <span>
+                <i class="fa-regular fa-bookmark active"></i>
+            </span>
+            <span>
+                <i class="fa-solid fa-bookmark"></i>
+            </span>
+        </div>
+        
+    </div>
+
     `
+    // actionButtons.innerHTML = `
+    // Hey tere
+    // `
 
     feed.appendChild(head)
     feed.appendChild(postText)
